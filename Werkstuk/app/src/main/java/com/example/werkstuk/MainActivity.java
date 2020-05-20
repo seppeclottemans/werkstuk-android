@@ -1,6 +1,8 @@
 package com.example.werkstuk;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Context;
 import android.hardware.Sensor;
@@ -11,7 +13,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.werkstuk.databinding.ActivityMainBinding;
+
 import java.text.DecimalFormat;
+
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
 
@@ -24,7 +29,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+        // set live data bindings
+        PhoneDropsViewModel phoneDropViewModel = new ViewModelProvider(this).get(PhoneDropsViewModel.class);
+        ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        binding.setViewmodel(phoneDropViewModel);
+        setContentView(binding.getRoot());
 
         // set accelerometer as sensor listener.
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
