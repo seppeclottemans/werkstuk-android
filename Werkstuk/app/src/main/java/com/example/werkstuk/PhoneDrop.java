@@ -3,7 +3,7 @@ package com.example.werkstuk;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "phone_drops")
+@Entity(tableName = "phone_drops_table")
 public class PhoneDrop {
     @PrimaryKey(autoGenerate = true)
     private long id;

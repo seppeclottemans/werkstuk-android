@@ -1,9 +1,8 @@
 package com.example.werkstuk;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -13,33 +12,34 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.werkstuk.databinding.ActivityMainBinding;
-
 import java.text.DecimalFormat;
 
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
-
-    private static final String TAG = "MainActivity";
-
+    private PhoneDropsViewModel phoneDropsViewModel;
     // watched this tutorial for the basic uses of the accelerometer (logging the results on change): https://www.youtube.com/watch?v=Rda_5s4rObQ (19/05/2020)
     private SensorManager sensorManager;
     Sensor accelerometer;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-        // set live data bindings
-        PhoneDropsViewModel phoneDropViewModel = new ViewModelProvider(this).get(PhoneDropsViewModel.class);
-        ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        binding.setViewmodel(phoneDropViewModel);
-        setContentView(binding.getRoot());
+        phoneDropsViewModel = new ViewModelProvider(this).get(PhoneDropsViewModel.class);
+        phoneDropsViewModel.getTotal().observe(this, new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                Toast.makeText(MainActivity.this, Integer.toString(integer), Toast.LENGTH_LONG).show();
+            }
+        });
 
         // set accelerometer as sensor listener.
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         sensorManager.registerListener(MainActivity.this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+
     }
 
     @Override
@@ -67,9 +67,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
             // for testing in the emulator: loAccelerationReader <= 6.0
             // for fall accuracy: ldAccRound > 0.3d && ldAccRound < 0.5d
-            if (loAccelerationReader <= 6.0) {
-                Log.d(TAG, "fall detected!");
+            if (ldAccRound > 0.3d && ldAccRound < 0.5d) {
+                // a fall has been detected
+                Log.d("MainActivity", "fall detected!");
                 Toast.makeText(this, "Fall detected", Toast.LENGTH_LONG).show();
+
             }
         }
     }

@@ -2,14 +2,22 @@ package com.example.werkstuk;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 @Dao
 public interface PhoneDropDao {
     @Insert
     void insert(PhoneDrop... phoneDrops);
 
-    @Query("SELECT COUNT(id) FROM phone_drops")
+    @Update
+    void update(PhoneDrop... phoneDrops);
+
+    @Delete
+    void delete(PhoneDrop phone_drops);
+
+    @Query("SELECT COUNT(id) FROM phone_drops_table")
     LiveData<Integer> getDropCount();
 }
