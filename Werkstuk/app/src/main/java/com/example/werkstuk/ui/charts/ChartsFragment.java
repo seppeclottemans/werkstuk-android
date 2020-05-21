@@ -1,4 +1,4 @@
-package com.example.werkstuk.ui.notifications;
+package com.example.werkstuk.ui.charts;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.werkstuk.R;
 
-public class NotificationsFragment extends Fragment {
+public class ChartsFragment extends Fragment {
 
-    private NotificationsViewModel notificationsViewModel;
+    private ChartsViewModel chartsViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        notificationsViewModel =
-                ViewModelProviders.of(this).get(NotificationsViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_notifications, container, false);
-        final TextView textView = root.findViewById(R.id.text_notifications);
-        notificationsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        chartsViewModel =
+                ViewModelProviders.of(this).get(ChartsViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_charts, container, false);
+        final TextView textView = root.findViewById(R.id.text_dashboard);
+        chartsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

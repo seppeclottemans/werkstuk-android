@@ -82,6 +82,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             if (loAccelerationReader <= 6.0) {
                 // a fall has been detected
                 Toast.makeText(this, String.valueOf(sensorEvent.timestamp), Toast.LENGTH_LONG).show();
+
+                // new instance of phone drop
                 Date currentTime = Calendar.getInstance().getTime();
                 PhoneDrop phoneDrop = new PhoneDrop(currentTime);
                 mainViewModel.insert(phoneDrop);
