@@ -10,9 +10,13 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
@@ -20,18 +24,21 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     // watched this tutorial for the basic uses of the accelerometer (logging the results on change): https://www.youtube.com/watch?v=Rda_5s4rObQ (19/05/2020)
     private SensorManager sensorManager;
     Sensor accelerometer;
+    private TextView dropCounter;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        dropCounter = findViewById(R.id.dropCounter);
 
+        // live data viewModel configuration
         phoneDropsViewModel = new ViewModelProvider(this).get(PhoneDropsViewModel.class);
         phoneDropsViewModel.getTotal().observe(this, new Observer<Integer>() {
             @Override
             public void onChanged(Integer integer) {
-                Toast.makeText(MainActivity.this, Integer.toString(integer), Toast.LENGTH_LONG).show();
+                dropCounter.setText(String.valueOf(integer));
             }
         });
 
@@ -67,11 +74,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
             // for testing in the emulator: loAccelerationReader <= 6.0
             // for fall accuracy: ldAccRound > 0.3d && ldAccRound < 0.5d
-            if (ldAccRound > 0.3d && ldAccRound < 0.5d) {
+            if (loAccelerationReader <= 6.0) {
                 // a fall has been detected
-                Log.d("MainActivity", "fall detected!");
-                Toast.makeText(this, "Fall detected", Toast.LENGTH_LONG).show();
-
+                Toast.makeText(this, String.valueOf(sensorEvent.timestamp), Toast.LENGTH_LONG).show();
+                Date currentTime = Calendar.getInstance().getTime();
+                PhoneDrop phoneDrop = new PhoneDrop(currentTime);
+                phoneDropsViewModel.insert(phoneDrop);
             }
         }
     }

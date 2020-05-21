@@ -2,14 +2,18 @@ package com.example.werkstuk;
 
 import android.content.Context;
 import android.os.AsyncTask;
-
 import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import java.util.Calendar;
+
+// for setup tutorial used (Room + ViewModel + LiveData + RecyclerView (MVVM)): https://www.youtube.com/channel/UC_Fh8kvtkVPkeihBs42jGcA
 @Database(entities = { PhoneDrop.class }, version = 1, exportSchema = false)
+@TypeConverters({TimestampConverter.class})
 public abstract class PhoneDropAppDatabase extends RoomDatabase {
 
     private static PhoneDropAppDatabase instance;
@@ -48,9 +52,9 @@ public abstract class PhoneDropAppDatabase extends RoomDatabase {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            phoneDropDao.insert(new PhoneDrop());
-            phoneDropDao.insert(new PhoneDrop());
-            phoneDropDao.insert(new PhoneDrop());
+            phoneDropDao.insert(new PhoneDrop(Calendar.getInstance().getTime()));
+            phoneDropDao.insert(new PhoneDrop(Calendar.getInstance().getTime()));
+            phoneDropDao.insert(new PhoneDrop(Calendar.getInstance().getTime()));
             return null;
         };
     }
