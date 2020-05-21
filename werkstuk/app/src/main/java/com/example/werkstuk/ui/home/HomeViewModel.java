@@ -1,19 +1,34 @@
 package com.example.werkstuk.ui.home;
 
+import android.app.Application;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class HomeViewModel extends ViewModel {
+import com.example.werkstuk.PhoneDrop;
+import com.example.werkstuk.PhoneDropRepository;
 
-    private MutableLiveData<String> mText;
+public class HomeViewModel extends AndroidViewModel {
 
-    public HomeViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
+    private PhoneDropRepository repository;
+    private LiveData<Integer> total;
+
+    public HomeViewModel(@NonNull Application application) {
+        super(application);
+        repository = new PhoneDropRepository(application);
+        total = repository.getTotal();
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public void insert(PhoneDrop phoneDrop){
+        repository.insert(phoneDrop);
     }
+
+    public LiveData<Integer> getTotal() {
+        return total;
+    }
+
+
 }

@@ -24,11 +24,10 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
-    private PhoneDropsViewModel phoneDropsViewModel;
+    private MainViewModel mainViewModel;
     // watched this tutorial for the basic uses of the accelerometer (logging the results on change): https://www.youtube.com/watch?v=Rda_5s4rObQ (19/05/2020)
     private SensorManager sensorManager;
     Sensor accelerometer;
-    private TextView dropCounter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,16 +46,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         NavigationUI.setupWithNavController(navView, navController);
 
 
-        dropCounter = findViewById(R.id.dropCounter);
-
-        // live data viewModel configuration
-        phoneDropsViewModel = new ViewModelProvider(this).get(PhoneDropsViewModel.class);
-        phoneDropsViewModel.getTotal().observe(this, new Observer<Integer>() {
-            @Override
-            public void onChanged(Integer integer) {
-                dropCounter.setText(String.valueOf(integer));
-            }
-        });
+        mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
 
         // set accelerometer as sensor listener.
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -94,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 Toast.makeText(this, String.valueOf(sensorEvent.timestamp), Toast.LENGTH_LONG).show();
                 Date currentTime = Calendar.getInstance().getTime();
                 PhoneDrop phoneDrop = new PhoneDrop(currentTime);
-                phoneDropsViewModel.insert(phoneDrop);
+                mainViewModel.insert(phoneDrop);
             }
         }
     }
