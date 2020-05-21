@@ -1,4 +1,7 @@
 <resources>
-    <string name="app_name">Werkstuk</string>
-    <string name="counter">0</string>
+    <string name="app_name">werkstuk</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="Counter">0</string>
 </resources>
