@@ -14,7 +14,7 @@
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.example.werkstuk.ui.charts.ChartsFragment"
-        android:label="@string/title_settings"
+        android:label="@string/title_charts"
         tools:layout="@layout/fragment_charts" />
 
     <fragment

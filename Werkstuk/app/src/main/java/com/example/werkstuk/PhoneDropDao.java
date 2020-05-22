@@ -7,6 +7,8 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import java.util.List;
+
 @Dao
 public interface PhoneDropDao {
     @Insert
@@ -20,4 +22,10 @@ public interface PhoneDropDao {
 
     @Query("SELECT COUNT(id) FROM phone_drops_table")
     LiveData<Integer> getDropCount();
+
+    @Query("SELECT * FROM phone_drops_table")
+    LiveData<List<PhoneDrop>> getAllDrops();
+
+    @Query("SELECT count(*) as drops, strftime('%Y-m-d%', created_at) as date FROM phone_drops_table GROUP BY date")
+    LiveData<List<DropsByDay>> GetDropsByDate();
 }

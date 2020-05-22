@@ -42,4 +42,8 @@ dependencies {
     //noinspection LifecycleAnnotationProcessorWithJava8
     annotationProcessor 'android.arch.lifecycle:compiler:2.2.0'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    // Stetho core
+    implementation 'com.facebook.stetho:stetho:1.5.1'
+    //If you want to add a network helper
+    implementation 'com.facebook.stetho:stetho-okhttp:1.5.1'
 }

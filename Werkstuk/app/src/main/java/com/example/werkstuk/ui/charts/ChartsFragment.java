@@ -10,9 +10,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.werkstuk.DropsByDay;
+import com.example.werkstuk.PhoneDrop;
 import com.example.werkstuk.R;
+import com.github.mikephil.charting.data.Entry;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ChartsFragment extends Fragment {
 
@@ -20,16 +27,29 @@ public class ChartsFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        chartsViewModel =
-                ViewModelProviders.of(this).get(ChartsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_charts, container, false);
-        final TextView textView = root.findViewById(R.id.text_dashboard);
-        chartsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+
+        // live data viewModel configuration
+        chartsViewModel = new ViewModelProvider(this).get(ChartsViewModel.class);
+        chartsViewModel.getAllPhoneDropsByDay().observe(getViewLifecycleOwner(), new Observer<List<DropsByDay>>() {
             @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
+            public void onChanged(List<DropsByDay> phoneDrops) {
+                List<DropsByDay> test = phoneDrops;
             }
         });
+
         return root;
+    }
+
+    public void drawGraph(List<PhoneDrop> phoneDrops){
+
+/*        List<Entry> entries = new ArrayList<Entry>();
+
+        for (PhoneDrop phoneDrop : phoneDrops) {
+
+            // turn your data into Entry objects
+            entries.add(new Entry(data.getValueX(), data.getValueY()));
+        }*/
+
     }
 }
