@@ -12,7 +12,7 @@ import java.util.TimeZone;
 
 // Code from this class: https://android.jlelse.eu/5-steps-to-implement-room-persistence-library-in-android-47b10cd47b24
 public class TimestampConverter {
-    private static DateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+    private static DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     @TypeConverter
     public static Date fromTimestamp(String value) {
@@ -36,16 +36,6 @@ public class TimestampConverter {
         TimeZone timeZone = TimeZone.getDefault();
         df.setTimeZone(timeZone);
         return value == null ? null : df.format(value);
-    }
-
-    @TypeConverter
-    public static Date toDate(Long dateLong){
-        return dateLong == null ? null: new Date(dateLong);
-    }
-
-    @TypeConverter
-    public static Long fromDate(Date date){
-        return date == null ? null : date.getTime();
     }
 
 }
