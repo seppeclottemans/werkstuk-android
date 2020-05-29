@@ -26,6 +26,6 @@ public interface PhoneDropDao {
     @Query("SELECT * FROM phone_drops_table")
     LiveData<List<PhoneDrop>> getAllDrops();
 
-    @Query("SELECT count(*) as drops, strftime('%d-%m-%Y', created_at) as date FROM phone_drops_table GROUP BY date")
+    @Query("SELECT count(*) as drops, strftime('%d-%m-%Y', created_at) as dateString FROM phone_drops_table GROUP BY dateString")
     LiveData<List<DropsByDay>> GetDropsByDate();
 }

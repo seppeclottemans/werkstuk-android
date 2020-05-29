@@ -49,13 +49,23 @@ public class ChartsFragment extends Fragment {
         return root;
     }
 
+    // made with the graphs documentation: https://weeklycoding.com/mpandroidchart-documentation/
     public void drawGraph(List<DropsByDay> phoneDropsByDay){
 
-        List<Entry> dataEntries = new ArrayList<Entry>();
+        List<String> allDays = chartsViewModel.GetdateStringsBetween(phoneDropsByDay.get(0).getDateString(), phoneDropsByDay.get(phoneDropsByDay.size() - 1).getDateString());
 
-        for(int i = 0; i < phoneDropsByDay.size(); i++) {
-            // turn your data into Entry objects
-            dataEntries.add(new Entry(i, phoneDropsByDay.get(i).getDrops()));
+        List<Entry> dataEntries = new ArrayList<Entry>();
+        Integer phonDropsByDayIndex = 0;
+
+        // loop over each day check if the day is in drops by day else 0 drops that day
+        for(int i = 0; i < allDays.size(); i++) {
+            if (allDays.get(i).equals(phoneDropsByDay.get(phonDropsByDayIndex).getDateString())){
+                // turn your data into Entry objects
+                dataEntries.add(new Entry(i, phoneDropsByDay.get(phonDropsByDayIndex).getDrops()));
+                phonDropsByDayIndex++;
+            }else {
+                dataEntries.add(new Entry(i, 0));
+            }
         }
 
         LineDataSet dataSet = new LineDataSet(dataEntries, "PhoneDrops by day");

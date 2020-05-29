@@ -26,7 +26,7 @@ public abstract class PhoneDropAppDatabase extends RoomDatabase {
             instance = Room.databaseBuilder(context.getApplicationContext(),
                     PhoneDropAppDatabase.class,
                     "db_phone_drop")
-                    .fallbackToDestructiveMigration() // delete en hermaakt de db elke keer als er een wijziging is
+                    .fallbackToDestructiveMigration()
                     .addCallback(phoneDropCallBack)
                     .build();
         }
@@ -52,9 +52,14 @@ public abstract class PhoneDropAppDatabase extends RoomDatabase {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            phoneDropDao.insert(new PhoneDrop(Calendar.getInstance().getTime()));
-            phoneDropDao.insert(new PhoneDrop(Calendar.getInstance().getTime()));
-            phoneDropDao.insert(new PhoneDrop(Calendar.getInstance().getTime()));
+            Calendar calender = Calendar.getInstance();
+            phoneDropDao.insert(new PhoneDrop(calender.getTime()));
+            phoneDropDao.insert(new PhoneDrop(calender.getTime()));
+            calender.add(Calendar.DATE, -2);
+            phoneDropDao.insert(new PhoneDrop(calender.getTime()));
+            calender.add(Calendar.DATE, -3);
+            phoneDropDao.insert(new PhoneDrop(calender.getTime()));
+            phoneDropDao.insert(new PhoneDrop(calender.getTime()));
             return null;
         };
     }

@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             // for fall accuracy: ldAccRound > 0.3d && ldAccRound < 0.5d
             if (loAccelerationReader <= 6.0) {
                 // a fall has been detected
-                Toast.makeText(this, String.valueOf(sensorEvent.timestamp), Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Fall detected", Toast.LENGTH_LONG).show();
 
                 // new instance of phone drop
                 Date currentTime = Calendar.getInstance().getTime();

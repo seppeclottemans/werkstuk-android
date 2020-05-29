@@ -1,22 +1,26 @@
 package com.example.werkstuk;
 
-import java.util.Date;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 public class DropsByDay {
-    private Date date;
+    private String dateString;
     private Integer drops;
 
-    public DropsByDay(Date date, Integer drops) {
-        this.date = date;
+    public DropsByDay(Integer drops, String dateString) {
         this.drops = drops;
+        this.dateString = dateString;
     }
 
-    public Date getDate() {
-        return date;
+    public String getDateString() {
+        return dateString;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDateString(String dateString) {
+        this.dateString = dateString;
     }
 
     public Integer getDrops() {
