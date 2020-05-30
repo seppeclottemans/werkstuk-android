@@ -19,9 +19,14 @@ import com.example.werkstuk.DropsByDay;
 import com.example.werkstuk.PhoneDrop;
 import com.example.werkstuk.R;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
+import com.github.mikephil.charting.formatter.ValueFormatter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,12 +55,15 @@ public class ChartsFragment extends Fragment {
     }
 
     // made with the graphs documentation: https://weeklycoding.com/mpandroidchart-documentation/
+    // Draw a graph with the given data and add the missing dates.
     public void drawGraph(List<DropsByDay> phoneDropsByDay){
 
-        List<String> allDays = chartsViewModel.GetdateStringsBetween(phoneDropsByDay.get(0).getDateString(), phoneDropsByDay.get(phoneDropsByDay.size() - 1).getDateString());
+        final List<String> allDays = chartsViewModel.GetdateStringsBetween(phoneDropsByDay.get(0).getDateString(), phoneDropsByDay.get(phoneDropsByDay.size() - 1).getDateString());
 
-        List<Entry> dataEntries = new ArrayList<Entry>();
+        ArrayList<Entry> dataEntries = new ArrayList<Entry>();
         Integer phonDropsByDayIndex = 0;
+
+
 
         // loop over each day check if the day is in drops by day else 0 drops that day
         for(int i = 0; i < allDays.size(); i++) {
@@ -71,6 +79,19 @@ public class ChartsFragment extends Fragment {
         LineDataSet dataSet = new LineDataSet(dataEntries, "PhoneDrops by day");
         dataSet.setColor(Color.RED);
 
+        // set x-axis values to dates
+        for (int i = 0; i < allDays.size(); i++)
+        {
+            allDays.set(i, allDays.get(i).substring(0, 5));
+        }
+        phoneDropsByDayLineChart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(allDays));
+        phoneDropsByDayLineChart.getXAxis().setAxisMaximum(allDays.size());
+
+
+
+
+
+        // set chart data
         LineData lineData = new LineData(dataSet);
         phoneDropsByDayLineChart.setData(lineData);
         phoneDropsByDayLineChart.invalidate(); // refresh

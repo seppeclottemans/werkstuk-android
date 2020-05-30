@@ -44,8 +44,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
-
-
         mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
 
         // set accelerometer as sensor listener.

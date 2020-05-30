@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.TimeZone;
 
 // Code from this class: https://android.jlelse.eu/5-steps-to-implement-room-persistence-library-in-android-47b10cd47b24
+// Convert date to string and string to date tos save in the database.
 public class TimestampConverter {
     private static DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 

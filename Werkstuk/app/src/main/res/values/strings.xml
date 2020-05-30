@@ -4,4 +4,6 @@
     <string name="title_charts">Charts</string>
     <string name="title_settings">Settings</string>
     <string name="Counter">0</string>
+    <string name="home_title">Drop Count</string>
+    <string name="screen_crack">screen_crack</string>
 </resources>

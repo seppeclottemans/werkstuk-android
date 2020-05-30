@@ -60,6 +60,22 @@ public abstract class PhoneDropAppDatabase extends RoomDatabase {
             calender.add(Calendar.DATE, -3);
             phoneDropDao.insert(new PhoneDrop(calender.getTime()));
             phoneDropDao.insert(new PhoneDrop(calender.getTime()));
+            phoneDropDao.insert(new PhoneDrop(calender.getTime()));
+            phoneDropDao.insert(new PhoneDrop(calender.getTime()));
+            phoneDropDao.insert(new PhoneDrop(calender.getTime()));
+            calender.add(Calendar.DATE, -2);
+            phoneDropDao.insert(new PhoneDrop(calender.getTime()));
+            calender.add(Calendar.DATE, -10);
+            phoneDropDao.insert(new PhoneDrop(calender.getTime()));
+            calender.add(Calendar.DATE, -1);
+            phoneDropDao.insert(new PhoneDrop(calender.getTime()));
+            calender.add(Calendar.DATE, -2);
+            phoneDropDao.insert(new PhoneDrop(calender.getTime()));
+            calender.add(Calendar.DATE, -2);
+            phoneDropDao.insert(new PhoneDrop(calender.getTime()));
+            calender.add(Calendar.DATE, -2);
+            phoneDropDao.insert(new PhoneDrop(calender.getTime()));
+            calender.add(Calendar.DATE, -2);
             return null;
         };
     }
