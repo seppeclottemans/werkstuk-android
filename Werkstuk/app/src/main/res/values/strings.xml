@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">werkstuk</string>
-    <string name="title_home">Home</string>
-    <string name="title_charts">Charts</string>
-    <string name="title_settings">Settings</string>
+    <string name="nav_title_home">Home</string>
+    <string name="nav_title_charts">Charts</string>
+    <string name="nav_title_settings">Settings</string>
     <string name="Counter">0</string>
     <string name="home_title">Drop Count</string>
     <string name="screen_crack">screen_crack</string>
+    <string name="charts_title">All phone drops</string>
 </resources>
