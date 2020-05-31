@@ -7,4 +7,13 @@
     <string name="home_title">Drop Count</string>
     <string name="screen_crack">screen_crack</string>
     <string name="charts_title">All phone drops</string>
+    <string name="about_me_title">This is me</string>
+    <string name="about_me_description">My name is Seppe Clottemans. I am 20 years old and study Multimedia And Communication Technology at the Erasmus University College in Brussels. This is the very first Android project I ever made I hope you enjoy the application.</string>
+    <string name="hobbies_subtitle">Hobbies</string>
+    <string name="traveling_hobby">Traveling</string>
+    <string name="gaming_hobby">Gaming</string>
+    <string name="magic_the_gathering_hobby">Magic The Gathering</string>
+    <string name="checkbox_title">This is just for fun</string>
+    <string name="checkbox_intro">This checkbox is just for fun. Press it if you like the application.</string>
+    <string name="checkbox_text">I like the application</string>
 </resources>
