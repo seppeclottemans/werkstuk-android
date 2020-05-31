@@ -45,20 +45,43 @@ public class ChartsFragment extends Fragment {
 
         assert getArguments() != null;
         chartDataSpecification = getArguments().getString("chart_data_specification");
+
         chartTitle = root.findViewById(R.id.chart_title);
         chartTitle.setText(chartDataSpecification);
-
         phoneDropsByDayLineChart = root.findViewById(R.id.phone_drops_by_day_line_chart);
 
 
         // live data viewModel configuration
         chartsViewModel = new ViewModelProvider(this).get(ChartsViewModel.class);
-        chartsViewModel.getAllPhoneDropsByDay().observe(getViewLifecycleOwner(), new Observer<List<DropsByDay>>() {
-            @Override
-            public void onChanged(List<DropsByDay> phoneDropsByDay) {
-                drawGraph(phoneDropsByDay);
-            }
-        });
+
+
+        // set custom observer
+        switch (chartDataSpecification) {
+            case "Drops this week":
+                chartsViewModel.getThisWeeksDropsByDate().observe(getViewLifecycleOwner(), new Observer<List<DropsByDay>>() {
+                    @Override
+                    public void onChanged(List<DropsByDay> phoneDropsByDay) {
+                        drawGraph(phoneDropsByDay);
+                    }
+                });
+                break;
+            case "Drops this month":
+                chartsViewModel.getThisMonthsDropsByDate().observe(getViewLifecycleOwner(), new Observer<List<DropsByDay>>() {
+                    @Override
+                    public void onChanged(List<DropsByDay> phoneDropsByDay) {
+                        drawGraph(phoneDropsByDay);
+                    }
+                });
+                break;
+            case "All Phone Drops":
+                chartsViewModel.getAllPhoneDropsByDay().observe(getViewLifecycleOwner(), new Observer<List<DropsByDay>>() {
+                    @Override
+                    public void onChanged(List<DropsByDay> phoneDropsByDay) {
+                        drawGraph(phoneDropsByDay);
+                    }
+                });
+                break;
+        }
 
         return root;
     }

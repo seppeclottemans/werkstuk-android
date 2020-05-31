@@ -22,15 +22,28 @@ public class ChartsViewModel extends AndroidViewModel {
 
     private PhoneDropRepository repository;
     private LiveData<List<DropsByDay>> allDropsByDay;
+    private LiveData<List<DropsByDay>> thisWeeksDropsByDate;
+    private LiveData<List<DropsByDay>> thisMonthsDropsByDate;
 
     public ChartsViewModel(@NonNull Application application) {
         super(application);
         repository = new PhoneDropRepository(application);
         allDropsByDay = repository.getAllPhoneDropsByDay();
+        thisWeeksDropsByDate = repository.getThisWeeksDropsByDate();
+        thisMonthsDropsByDate = repository.getThisMonthsDropsByDate();
     }
 
+    // live data objects
     public LiveData<List<DropsByDay>> getAllPhoneDropsByDay() {
         return allDropsByDay;
+    }
+
+    public LiveData<List<DropsByDay>> getThisWeeksDropsByDate() {
+        return thisWeeksDropsByDate;
+    }
+
+    public LiveData<List<DropsByDay>> getThisMonthsDropsByDate() {
+        return thisMonthsDropsByDate;
     }
 
 

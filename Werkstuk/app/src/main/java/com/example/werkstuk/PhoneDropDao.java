@@ -28,4 +28,12 @@ public interface PhoneDropDao {
 
     @Query("SELECT count(*) as drops, strftime('%d-%m-%Y', created_at) as dateString FROM phone_drops_table GROUP BY dateString")
     LiveData<List<DropsByDay>> GetDropsByDate();
+
+    // get this weeks data: https://stackoverflow.com/questions/9487835/get-this-weeks-data-using-sqlite
+    @Query("SELECT count(*) as drops, strftime('%d-%m-%Y', created_at) as dateString FROM phone_drops_table WHERE dateString >= DATE('now', 'weekday 0', '-7 days') GROUP BY dateString ")
+    LiveData<List<DropsByDay>> GetThisWeeksDropsByDate();
+
+    // get this months data: https://stackoverflow.com/questions/36820890/select-data-from-current-month-in-android-with-sqlite
+    @Query("SELECT count(*) as drops, strftime('%d-%m-%Y', created_at) as dateString FROM phone_drops_table where strftime('%Y',created_at)= strftime('%Y',date('now')) and strftime('%m',created_at ) = strftime('%m',date('now')) GROUP BY dateString ")
+    LiveData<List<DropsByDay>> GetThisMonthsDropsByDate();
 }

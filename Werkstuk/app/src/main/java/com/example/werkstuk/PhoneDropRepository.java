@@ -13,6 +13,8 @@ public class PhoneDropRepository {
     private LiveData<Integer> total;
     private LiveData<List<PhoneDrop>> allPhoneDrops;
     private LiveData<List<DropsByDay>> allPhoneDropsByDay;
+    private LiveData<List<DropsByDay>> thisWeeksDropsByDate;
+    private LiveData<List<DropsByDay>> thisMonthsDropsByDate;
 
     public PhoneDropRepository(Application application){
         PhoneDropAppDatabase database = PhoneDropAppDatabase.getInstance(application);
@@ -20,6 +22,8 @@ public class PhoneDropRepository {
         total = phoneDropDao.getDropCount();
         allPhoneDrops = phoneDropDao.getAllDrops();
         allPhoneDropsByDay = phoneDropDao.GetDropsByDate();
+        thisWeeksDropsByDate = phoneDropDao.GetThisWeeksDropsByDate();
+        thisMonthsDropsByDate = phoneDropDao.GetThisMonthsDropsByDate();
     }
 
     // live data objects
@@ -33,6 +37,14 @@ public class PhoneDropRepository {
 
     public LiveData<List<DropsByDay>> getAllPhoneDropsByDay(){
         return  allPhoneDropsByDay;
+    }
+
+    public LiveData<List<DropsByDay>> getThisWeeksDropsByDate(){
+        return  thisWeeksDropsByDate;
+    }
+
+    public LiveData<List<DropsByDay>> getThisMonthsDropsByDate(){
+        return  thisMonthsDropsByDate;
     }
 
     // query's
