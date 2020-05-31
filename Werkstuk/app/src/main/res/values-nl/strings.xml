@@ -5,5 +5,15 @@
     <string name="nav_title_about_me">Over Mij</string>
     <string name="home_title">Aantal vallen</string>
     <string name="screen_crack">scherm_breuk</string>
-    <string name="charts_title">alle vallen</string>
+    <string name="about_me_title">Dit ben ik.</string>
+    <string name="hobbies_subtitle">Hobbies</string>
+    <string name="traveling_hobby">Reizen</string>
+    <string name="checkbox_title">Dit is voor de fun</string>
+    <string name="checkbox_intro">Deze checkbox is enkel voor het plezier. druk erop als je de applicatie leuk vindt.</string>
+    <string name="checkbox_text">Ik vind de app leuk</string>
+    <string name="all_drops_chart_name">Alle vallen</string>
+    <string name="pop_up_text">Het spijt on heel erg maar deze app werkt enkel als er een accelerometer in je toestel zit, en deze kunnen we bij dit toestel niet vinden. We doen ons uiterste best om met een oplossing te komen voor toekomstige versies van de app, maar tot dan zal je deze app nog niet kunnen gebruiken.</string>
+    <string name="drops_this_month_chart_name">Aantal vallen deze maand</string>
+    <string name="drops_this_week_chart_name">Aantal vallen deze week</string>
+    <string name="about_me_description">Mijn naam is Seppe Clottemans. Ik ben 20 jaar en studeer Multimedia en Communicatie Technologie aan de Erasmus hogeschool Brussel. Dit is het allereerste Android project die ik ooit maakte ik hoop dat je de applicatie leuk vindt.</string>
 </resources>

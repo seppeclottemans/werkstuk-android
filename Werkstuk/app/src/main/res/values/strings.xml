@@ -6,17 +6,18 @@
     <string name="Counter" translatable="false">0</string>
     <string name="home_title">Drop Count</string>
     <string name="screen_crack">screen_crack</string>
-    <string name="charts_title">All phone drops</string>
     <string name="about_me_title">This is me</string>
     <string name="about_me_description">My name is Seppe Clottemans. I am 20 years old and study Multimedia And Communication Technology at the Erasmus University College in Brussels. This is the very first Android project I ever made I hope you enjoy the application.</string>
     <string name="hobbies_subtitle">Hobbies</string>
     <string name="traveling_hobby">Traveling</string>
-    <string name="gaming_hobby">Gaming</string>
-    <string name="magic_the_gathering_hobby">Magic The Gathering</string>
+    <string name="gaming_hobby" translatable="false">Gaming</string>
+    <string name="magic_the_gathering_hobby" translatable="false">Magic The Gathering</string>
     <string name="checkbox_title">This is just for fun</string>
     <string name="checkbox_intro">This checkbox is just for fun. Press it if you like the application.</string>
     <string name="checkbox_text">I like the application</string>
     <string name="all_drops_chart_name">All Drops</string>
-    <string name="app_unusable_pop_up_title">Sorry!</string>
+    <string name="app_unusable_pop_up_title" translatable="false">Sorry!</string>
     <string name="pop_up_text">We are very sorry but this app only works with an accelerometer in your device, and it seems like your device does not have one. We are trying to find a solution for this in future versions of the app, but until then you will not be able to use this app.</string>
+    <string name="drops_this_month_chart_name">Drops this month</string>
+    <string name="drops_this_week_chart_name">Drops this week</string>
 </resources>
