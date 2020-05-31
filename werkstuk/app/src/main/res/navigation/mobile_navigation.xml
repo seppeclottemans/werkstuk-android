@@ -33,9 +33,13 @@
         android:id="@+id/navigation_chart"
         android:name="com.example.werkstuk.ui.charts.ChartsFragment"
         android:label="@string/nav_title_charts"
-        tools:layout="@layout/fragment_charts">
+        tools:layout="@layout/fragment_charts"
+        app:navGraph="@navigation/mobile_navigation">
 
         <argument android:name="chart_data_specification" />
+        <action
+            android:id="@+id/back_to_charts_list"
+            app:destination="@id/navigation_charts_selector" />
     </fragment>
 
 

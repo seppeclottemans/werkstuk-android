@@ -8,12 +8,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.example.werkstuk.DropsByDay;
 import com.example.werkstuk.PhoneDrop;
@@ -37,6 +40,7 @@ public class ChartsFragment extends Fragment {
     private LineChart phoneDropsByDayLineChart;
     private String chartDataSpecification;
     private TextView chartTitle;
+    private NavController navController;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -53,8 +57,6 @@ public class ChartsFragment extends Fragment {
 
         // live data viewModel configuration
         chartsViewModel = new ViewModelProvider(this).get(ChartsViewModel.class);
-
-
         // set custom observer
         switch (chartDataSpecification) {
             case "Drops this week":
