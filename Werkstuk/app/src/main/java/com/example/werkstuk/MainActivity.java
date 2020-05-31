@@ -72,8 +72,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                     + Math.pow(loY, 2)
                     + Math.pow(loZ, 2));
 
-            DecimalFormat precision = new DecimalFormat("0.00");
-            double ldAccRound = Double.parseDouble(precision.format(loAccelerationReader));
+            // DecimalFormat precision = new DecimalFormat("0.00");
+            // double ldAccRound = Double.parseDouble(precision.format(loAccelerationReader));
 
             // for testing in the emulator: loAccelerationReader <= 6.0
             // for fall accuracy: ldAccRound > 0.3d && ldAccRound < 0.5d
