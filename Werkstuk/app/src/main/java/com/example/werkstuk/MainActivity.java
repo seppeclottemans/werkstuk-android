@@ -1,6 +1,7 @@
 package com.example.werkstuk;
 
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -49,7 +50,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         // set accelerometer as sensor listener.
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        sensorManager.registerListener(MainActivity.this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+        if (accelerometer != null)
+        {
+            sensorManager.registerListener(MainActivity.this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+        }else {
+            startActivity(new Intent(MainActivity.this, PopUp.class));
+        }
     }
 
     @Override

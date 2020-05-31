@@ -8,5 +8,6 @@ Android Jetpack tutorials: https://developer.android.com/jetpack
 tutorial used for basic Room and live data usage => Room + ViewModel + LiveData + RecyclerView (MVVM): https://www.youtube.com/channel/UC_Fh8kvtkVPkeihBs42jGcA (20/05/2020)
 various other youtube tutorials
 Android charts used: https://github.com/PhilJay/MPAndroidChart
+For the navigation basics I used a Bottom Navigation Activity.
 
 further resource references are in the code.

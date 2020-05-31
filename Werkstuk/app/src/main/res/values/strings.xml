@@ -16,4 +16,7 @@
     <string name="checkbox_title">This is just for fun</string>
     <string name="checkbox_intro">This checkbox is just for fun. Press it if you like the application.</string>
     <string name="checkbox_text">I like the application</string>
+    <string name="all_drops_chart_name">All Drops</string>
+    <string name="app_unusable_pop_up_title">Sorry!</string>
+    <string name="pop_up_text">We are very sorry but this app only works with an accelerometer in your device, and it seems like your device does not have one. We are trying to find a solution for this in future versions of the app, but until then you will not be able to use this app.</string>
 </resources>
