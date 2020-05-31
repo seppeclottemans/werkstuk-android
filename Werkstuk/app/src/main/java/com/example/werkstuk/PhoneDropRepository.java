@@ -16,7 +16,7 @@ public class PhoneDropRepository {
     private LiveData<List<DropsByDay>> thisWeeksDropsByDate;
     private LiveData<List<DropsByDay>> thisMonthsDropsByDate;
 
-    public PhoneDropRepository(Application application){
+    public PhoneDropRepository(Application application) {
         PhoneDropAppDatabase database = PhoneDropAppDatabase.getInstance(application);
         phoneDropDao = database.phoneDropDao();
         total = phoneDropDao.getDropCount();
@@ -27,36 +27,36 @@ public class PhoneDropRepository {
     }
 
     // live data objects
-    public LiveData<Integer> getTotal(){
-        return  total;
+    public LiveData<Integer> getTotal() {
+        return total;
     }
 
-    public LiveData<List<PhoneDrop>> getAllPhoneDrops(){
-        return  allPhoneDrops;
+    public LiveData<List<PhoneDrop>> getAllPhoneDrops() {
+        return allPhoneDrops;
     }
 
-    public LiveData<List<DropsByDay>> getAllPhoneDropsByDay(){
-        return  allPhoneDropsByDay;
+    public LiveData<List<DropsByDay>> getAllPhoneDropsByDay() {
+        return allPhoneDropsByDay;
     }
 
-    public LiveData<List<DropsByDay>> getThisWeeksDropsByDate(){
-        return  thisWeeksDropsByDate;
+    public LiveData<List<DropsByDay>> getThisWeeksDropsByDate() {
+        return thisWeeksDropsByDate;
     }
 
-    public LiveData<List<DropsByDay>> getThisMonthsDropsByDate(){
-        return  thisMonthsDropsByDate;
+    public LiveData<List<DropsByDay>> getThisMonthsDropsByDate() {
+        return thisMonthsDropsByDate;
     }
 
     // query's
-    public void insert(PhoneDrop phoneDrop){
-        new  InsertPhoneDropAsyncTask(phoneDropDao).execute(phoneDrop);
+    public void insert(PhoneDrop phoneDrop) {
+        new InsertPhoneDropAsyncTask(phoneDropDao).execute(phoneDrop);
     }
 
     // async tasks
-    private static class InsertPhoneDropAsyncTask extends AsyncTask<PhoneDrop, Void, Void>{
+    private static class InsertPhoneDropAsyncTask extends AsyncTask<PhoneDrop, Void, Void> {
         private PhoneDropDao phoneDropDao;
 
-        private InsertPhoneDropAsyncTask(PhoneDropDao phoneDropDao){
+        private InsertPhoneDropAsyncTask(PhoneDropDao phoneDropDao) {
             this.phoneDropDao = phoneDropDao;
         }
 

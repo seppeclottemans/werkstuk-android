@@ -24,7 +24,7 @@ public class AboutMeFragment extends Fragment {
         customCheckBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(customCheckBox.isChecked()){
+                if (customCheckBox.isChecked()) {
                     Toast.makeText(getContext(), R.string.thanks, Toast.LENGTH_LONG).show();
                 }
             }

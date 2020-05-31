@@ -8,13 +8,15 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.widget.Toast;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -23,10 +25,10 @@ import java.util.Date;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
+    Sensor accelerometer;
     private MainViewModel mainViewModel;
     // watched this tutorial for the basic uses of the accelerometer (logging the results on change): https://www.youtube.com/watch?v=Rda_5s4rObQ (19/05/2020)
     private SensorManager sensorManager;
-    Sensor accelerometer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,10 +50,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         // set accelerometer as sensor listener.
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        if (accelerometer != null)
-        {
+        if (accelerometer != null) {
             sensorManager.registerListener(MainActivity.this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
-        }else {
+        } else {
             startActivity(new Intent(MainActivity.this, PopUp.class));
         }
 

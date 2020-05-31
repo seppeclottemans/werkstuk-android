@@ -13,7 +13,7 @@ public class MainViewModel extends AndroidViewModel {
         repository = new PhoneDropRepository(application);
     }
 
-    public void insert(PhoneDrop phoneDrop){
+    public void insert(PhoneDrop phoneDrop) {
         repository.insert(phoneDrop);
     }
 

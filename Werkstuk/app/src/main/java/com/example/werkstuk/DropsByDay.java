@@ -1,11 +1,6 @@
 package com.example.werkstuk;
 
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Locale;
-
 public class DropsByDay {
     private String dateString;
     private Integer drops;

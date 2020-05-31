@@ -5,8 +5,6 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.example.werkstuk.DropsByDay;
 import com.example.werkstuk.PhoneDropRepository;
@@ -49,7 +47,7 @@ public class ChartsViewModel extends AndroidViewModel {
 
     // function code inspired by: https://stackoverflow.com/questions/11412713/generate-dates-between-two-date-in-android (29/05/2020)
     // this function returns a list of date strings of dates between 2 date strings.
-    public List<String> GetdateStringsBetween(String startDateString, String endDateString){
+    public List<String> GetdateStringsBetween(String startDateString, String endDateString) {
         ArrayList<String> dateStrings = new ArrayList<String>();
         SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
 
@@ -63,8 +61,7 @@ public class ChartsViewModel extends AndroidViewModel {
             e.printStackTrace();
         }
 
-        while(!startDateCalender.after(endDateCalender))
-        {
+        while (!startDateCalender.after(endDateCalender)) {
             dateStrings.add(formater.format(startDateCalender.getTime()));
             startDateCalender.add(Calendar.DATE, 1);
         }

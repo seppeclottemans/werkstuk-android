@@ -5,8 +5,6 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.example.werkstuk.PhoneDrop;
 import com.example.werkstuk.PhoneDropRepository;
@@ -22,7 +20,7 @@ public class HomeViewModel extends AndroidViewModel {
         total = repository.getTotal();
     }
 
-    public void insert(PhoneDrop phoneDrop){
+    public void insert(PhoneDrop phoneDrop) {
         repository.insert(phoneDrop);
     }
 
