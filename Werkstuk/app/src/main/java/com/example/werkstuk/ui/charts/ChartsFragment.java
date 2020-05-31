@@ -58,19 +58,23 @@ public class ChartsFragment extends Fragment {
     // Draw a graph with the given data and add the missing dates.
     public void drawGraph(List<DropsByDay> phoneDropsByDay){
 
-        final List<String> allDays = chartsViewModel.GetdateStringsBetween(phoneDropsByDay.get(0).getDateString(), phoneDropsByDay.get(phoneDropsByDay.size() - 1).getDateString());
+        String firstRecordedDrop = phoneDropsByDay.get(0).getDateString();
+        String lastRecordedDrop = phoneDropsByDay.get(phoneDropsByDay.size() - 1).getDateString();
+
+
+        final List<String> allDays = chartsViewModel.GetdateStringsBetween(firstRecordedDrop, lastRecordedDrop);
 
         ArrayList<Entry> dataEntries = new ArrayList<Entry>();
-        Integer phonDropsByDayIndex = 0;
+        Integer phoneDropsByDayIndex = 0;
 
 
 
         // loop over each day check if the day is in drops by day else 0 drops that day
         for(int i = 0; i < allDays.size(); i++) {
-            if (allDays.get(i).equals(phoneDropsByDay.get(phonDropsByDayIndex).getDateString())){
+            if (allDays.get(i).equals(phoneDropsByDay.get(phoneDropsByDayIndex).getDateString())){
                 // turn your data into Entry objects
-                dataEntries.add(new Entry(i, phoneDropsByDay.get(phonDropsByDayIndex).getDrops()));
-                phonDropsByDayIndex++;
+                dataEntries.add(new Entry(i, phoneDropsByDay.get(phoneDropsByDayIndex).getDrops()));
+                phoneDropsByDayIndex++;
             }else {
                 dataEntries.add(new Entry(i, 0));
             }
@@ -79,6 +83,9 @@ public class ChartsFragment extends Fragment {
         LineDataSet dataSet = new LineDataSet(dataEntries, "PhoneDrops by day");
         dataSet.setColor(Color.RED);
 
+        // set chart description
+        phoneDropsByDayLineChart.getDescription().setText("Your phone drops " + firstRecordedDrop.substring(6) + " - " + lastRecordedDrop.substring(6));
+
         // set x-axis values to dates
         for (int i = 0; i < allDays.size(); i++)
         {
@@ -86,10 +93,6 @@ public class ChartsFragment extends Fragment {
         }
         phoneDropsByDayLineChart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(allDays));
         phoneDropsByDayLineChart.getXAxis().setAxisMaximum(allDays.size());
-
-
-
-
 
         // set chart data
         LineData lineData = new LineData(dataSet);

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nav_title_home">Thuis</string>
+    <string name="nav_title_charts">Grafieken</string>
+    <string name="nav_title_about_me">Over mij</string>
+    <string name="Counter">0</string>
+    <string name="screen_crack">scherm_breuk</string>
+    <string name="charts_title">Alle vallen</string>
+    <string name="home_title">Aantal vallen</string>
+</resources>
