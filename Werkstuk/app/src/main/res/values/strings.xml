@@ -20,4 +20,6 @@
     <string name="pop_up_text">We are very sorry but this app only works with an accelerometer in your device, and it seems like your device does not have one. We are trying to find a solution for this in future versions of the app, but until then you will not be able to use this app.</string>
     <string name="drops_this_month_chart_name">Drops this month</string>
     <string name="drops_this_week_chart_name">Drops this week</string>
+    <string name="fall_detected">Fall detected</string>
+    <string name="thanks">Thank You!</string>
 </resources>

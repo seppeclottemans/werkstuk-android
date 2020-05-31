@@ -7,15 +7,9 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.werkstuk.ui.charts.ChartsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -23,8 +17,10 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
     private MainViewModel mainViewModel;
@@ -81,14 +77,17 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                     + Math.pow(loY, 2)
                     + Math.pow(loZ, 2));
 
-            // DecimalFormat precision = new DecimalFormat("0.00");
-            // double ldAccRound = Double.parseDouble(precision.format(loAccelerationReader));
+            // DecimalFormatSymbols is necessary to format some languages number values example (dutch) source: https://stackoverflow.com/questions/21646746/numberformatexception-on-european-versions-of-android
+            DecimalFormatSymbols symbols = DecimalFormatSymbols.getInstance(Locale.US);
+
+            DecimalFormat precision = new DecimalFormat("0.00", symbols);
+            double ldAccRound = Double.parseDouble(precision.format(loAccelerationReader));
 
             // for testing in the emulator: loAccelerationReader <= 6.0
             // for fall accuracy: ldAccRound > 0.3d && ldAccRound < 0.5d
             if (loAccelerationReader <= 6.0) {
                 // a fall has been detected
-                Toast.makeText(this, "Fall detected", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, R.string.fall_detected, Toast.LENGTH_LONG).show();
 
                 // new instance of phone drop
                 Date currentTime = Calendar.getInstance().getTime();

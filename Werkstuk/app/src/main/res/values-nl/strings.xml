@@ -16,4 +16,6 @@
     <string name="drops_this_month_chart_name">Aantal vallen deze maand</string>
     <string name="drops_this_week_chart_name">Aantal vallen deze week</string>
     <string name="about_me_description">Mijn naam is Seppe Clottemans. Ik ben 20 jaar en studeer Multimedia en Communicatie Technologie aan de Erasmus hogeschool Brussel. Dit is het allereerste Android project die ik ooit maakte ik hoop dat je de applicatie leuk vindt.</string>
+    <string name="fall_detected">Val gedetecteerd</string>
+    <string name="thanks">Dank u!</string>
 </resources>

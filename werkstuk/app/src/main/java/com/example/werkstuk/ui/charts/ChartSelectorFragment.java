@@ -52,13 +52,13 @@ public class ChartSelectorFragment extends Fragment {
                 Bundle bundle = new Bundle();
                 switch (v.getId()) {
                     case R.id.btn_drops_this_week:
-                        bundle.putString("chart_data_specification", "Drops this week");
+                        bundle.putString("chart_data_specification", getString(R.string.drops_this_week_chart_name));
                         break;
                     case R.id.btn_drops_this_month:
-                        bundle.putString("chart_data_specification", "Drops this month");
+                        bundle.putString("chart_data_specification", getString(R.string.drops_this_month_chart_name));
                         break;
                     case R.id.btn_all_drops:
-                        bundle.putString("chart_data_specification", "All Phone Drops");
+                        bundle.putString("chart_data_specification", getString(R.string.all_drops_chart_name));
                         break;
                 }
                 navController.navigate(R.id.to_chart_action, bundle);

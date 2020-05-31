@@ -58,31 +58,28 @@ public class ChartsFragment extends Fragment {
         // live data viewModel configuration
         chartsViewModel = new ViewModelProvider(this).get(ChartsViewModel.class);
         // set custom observer
-        switch (chartDataSpecification) {
-            case "Drops this week":
-                chartsViewModel.getThisWeeksDropsByDate().observe(getViewLifecycleOwner(), new Observer<List<DropsByDay>>() {
-                    @Override
-                    public void onChanged(List<DropsByDay> phoneDropsByDay) {
-                        drawGraph(phoneDropsByDay);
-                    }
-                });
-                break;
-            case "Drops this month":
+        if (chartDataSpecification.equals(getString(R.string.drops_this_week_chart_name))) {
+
+            chartsViewModel.getThisWeeksDropsByDate().observe(getViewLifecycleOwner(), new Observer<List<DropsByDay>>() {
+                @Override
+                public void onChanged(List<DropsByDay> phoneDropsByDay) {
+                    drawGraph(phoneDropsByDay);
+                }
+            });
+        } else if (chartDataSpecification.equals(getString(R.string.drops_this_month_chart_name))) {
                 chartsViewModel.getThisMonthsDropsByDate().observe(getViewLifecycleOwner(), new Observer<List<DropsByDay>>() {
                     @Override
                     public void onChanged(List<DropsByDay> phoneDropsByDay) {
                         drawGraph(phoneDropsByDay);
                     }
                 });
-                break;
-            case "All Phone Drops":
-                chartsViewModel.getAllPhoneDropsByDay().observe(getViewLifecycleOwner(), new Observer<List<DropsByDay>>() {
-                    @Override
-                    public void onChanged(List<DropsByDay> phoneDropsByDay) {
-                        drawGraph(phoneDropsByDay);
-                    }
-                });
-                break;
+            } else if (chartDataSpecification.equals(getString(R.string.all_drops_chart_name))) {
+            chartsViewModel.getAllPhoneDropsByDay().observe(getViewLifecycleOwner(), new Observer<List<DropsByDay>>() {
+                @Override
+                public void onChanged(List<DropsByDay> phoneDropsByDay) {
+                    drawGraph(phoneDropsByDay);
+                }
+            });
         }
 
         return root;
