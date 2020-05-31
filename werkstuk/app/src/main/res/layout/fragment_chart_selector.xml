@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.charts.ChartsFragment"
+    android:orientation="vertical"
+    android:paddingVertical="20dp"
+    android:paddingHorizontal="20dp">
+
+    <Button
+        android:id="@+id/btn_drops_this_week"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/drops_this_week_chart_name"
+        android:background="@drawable/custom_chart_button"
+        android:drawableEnd="@drawable/ic_arrow_forward_black_24dp"
+        android:drawableRight="@drawable/ic_arrow_forward_black_24dp"
+        style="@style/ButtonText"
+        />
+
+    <Space
+    android:layout_width="match_parent"
+    android:layout_height="150dp" />
+
+
+    <Button
+        android:id="@+id/btn_drops_this_month"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/drops_this_month_chart_name"
+        android:background="@drawable/custom_chart_button"
+        android:drawableEnd="@drawable/ic_arrow_forward_black_24dp"
+        android:drawableRight="@drawable/ic_arrow_forward_black_24dp"
+        style="@style/ButtonText"
+        />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="150dp" />
+
+
+    <Button
+        android:id="@+id/btn_all_drops"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/all_drops_chart_name"
+        android:background="@drawable/custom_chart_button"
+        android:drawableEnd="@drawable/ic_arrow_forward_black_24dp"
+        android:drawableRight="@drawable/ic_arrow_forward_black_24dp"
+        style="@style/ButtonText"
+        />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

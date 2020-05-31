@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@id/navigation_home">
 
     <fragment
         android:id="@+id/navigation_home"
@@ -12,14 +12,31 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_charts"
-        android:name="com.example.werkstuk.ui.charts.ChartsFragment"
+        android:id="@+id/navigation_charts_selector"
+        android:name="com.example.werkstuk.ui.charts.ChartSelectorFragment"
         android:label="@string/nav_title_charts"
-        tools:layout="@layout/fragment_charts" />
+        tools:layout="@layout/fragment_chart_selector" />
+        <action
+            android:id="@+id/to_chart_action"
+            app:destination="@id/navigation_chart"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+
 
     <fragment
         android:id="@+id/navigation_about_me"
         android:name="com.example.werkstuk.ui.about_me.AboutMeFragment"
         android:label="@string/nav_title_about_me"
         tools:layout="@layout/about_me" />
+
+    <fragment
+        android:id="@+id/navigation_chart"
+        android:name="com.example.werkstuk.ui.charts.ChartsFragment"
+        android:label="@string/nav_title_charts"
+        tools:layout="@layout/fragment_charts">
+
+        <argument android:name="chart_data_specification" />
+    </fragment>
+
+
 </navigation>

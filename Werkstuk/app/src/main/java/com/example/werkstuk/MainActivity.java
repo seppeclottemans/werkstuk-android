@@ -10,9 +10,11 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.werkstuk.ui.charts.ChartsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
@@ -40,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_charts, R.id.navigation_about_me)
+                R.id.navigation_home, R.id.navigation_charts_selector, R.id.navigation_about_me, R.id.navigation_chart)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
@@ -56,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }else {
             startActivity(new Intent(MainActivity.this, PopUp.class));
         }
+
     }
 
     @Override

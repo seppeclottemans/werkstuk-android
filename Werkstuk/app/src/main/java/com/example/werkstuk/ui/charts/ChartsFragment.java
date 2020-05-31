@@ -35,12 +35,21 @@ public class ChartsFragment extends Fragment {
 
     private ChartsViewModel chartsViewModel;
     private LineChart phoneDropsByDayLineChart;
+    private String chartDataSpecification;
+    private TextView chartTitle;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
         View root = inflater.inflate(R.layout.fragment_charts, container, false);
 
+        assert getArguments() != null;
+        chartDataSpecification = getArguments().getString("chart_data_specification");
+        chartTitle = root.findViewById(R.id.chart_title);
+        chartTitle.setText(chartDataSpecification);
+
         phoneDropsByDayLineChart = root.findViewById(R.id.phone_drops_by_day_line_chart);
+
 
         // live data viewModel configuration
         chartsViewModel = new ViewModelProvider(this).get(ChartsViewModel.class);
