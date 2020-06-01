@@ -49,7 +49,7 @@ public class ChartsViewModel extends AndroidViewModel {
     // this function returns a list of date strings of dates between 2 date strings.
     public List<String> GetdateStringsBetween(String startDateString, String endDateString) {
         ArrayList<String> dateStrings = new ArrayList<String>();
-        SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+        SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
 
         Calendar startDateCalender = Calendar.getInstance();
         Calendar endDateCalender = Calendar.getInstance();

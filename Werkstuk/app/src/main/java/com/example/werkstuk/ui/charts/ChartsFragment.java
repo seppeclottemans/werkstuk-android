@@ -104,11 +104,11 @@ public class ChartsFragment extends Fragment {
         dataSet.setColor(Color.RED);
 
         // set chart description
-        phoneDropsByDayLineChart.getDescription().setText("Your phone drops " + firstRecordedDrop.substring(6) + " - " + lastRecordedDrop.substring(6));
+        phoneDropsByDayLineChart.getDescription().setText("Your phone drops " + firstRecordedDrop.substring(0 , 4) + " - " + lastRecordedDrop.substring(0 , 4));
 
         // set x-axis values to dates
         for (int i = 0; i < allDays.size(); i++) {
-            allDays.set(i, allDays.get(i).substring(0, 5));
+            allDays.set(i, allDays.get(i).substring(5, 7) + "/" + allDays.get(i).substring(8, 10));
         }
         phoneDropsByDayLineChart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(allDays));
         phoneDropsByDayLineChart.getXAxis().setAxisMaximum(allDays.size());
